@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc14da3b-6a73-4c8d-9167-f04007055ac7" name="Changes" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/mlp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svm.py" beforeDir="false" afterPath="$PROJECT_DIR$/ml.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ml.py" beforeDir="false" afterPath="$PROJECT_DIR$/ml.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +45,10 @@
     &quot;Python.main (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.ml.executor&quot;: &quot;Run&quot;,
+    &quot;Python.mlp.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;a&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/luizrosa/github/unioste/ic/ICV_machine_learning_fraud_detection&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -118,6 +120,11 @@
       <workItem from="1714998700639" duration="1994000" />
       <workItem from="1715084217822" duration="815000" />
       <workItem from="1715260214807" duration="2894000" />
+      <workItem from="1715781160481" duration="116000" />
+      <workItem from="1716211950742" duration="1841000" />
+      <workItem from="1716383713399" duration="1192000" />
+      <workItem from="1716549078192" duration="951000" />
+      <workItem from="1716558654959" duration="89000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />

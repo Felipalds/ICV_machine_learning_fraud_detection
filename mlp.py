@@ -32,7 +32,9 @@ best_j_mlp = 0
 best_k_mlp = 0
 best_l_mlp = 0
 best_y_pred = 0
-for i in (5,6,10,12):
+# arvore de decisao e nayve bayes
+
+for i in (5,6,10,12)
     for j in ('constant','invscaling', 'adaptive'):
         for k in (50,100,150,300,500,1000):
             for l in ('identity', 'logistic', 'tanh', 'relu'):

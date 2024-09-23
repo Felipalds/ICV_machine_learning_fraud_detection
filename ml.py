@@ -10,11 +10,13 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import recall_score
 from sklearn.model_selection import train_test_split
 from skopt import BayesSearchCV
-from skopt.space import Categorical
+from skopt.space import Categorical, Integer
 from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
 
-data = pd.read_csv("./data/duplicated.csv")
+from mlp_wrapper import MLPWrapper
+
+data = pd.read_csv("./data/new_data.csv")
 
 print ("========== SEPARATING THE DATA ==========")
 X = data.drop('Class', axis=1)
@@ -95,24 +97,27 @@ print(len(x_test))
 # dt_score = accuracy_score(y_test, dt_opinion)
 # print(f"Best Decision Tree model: {dt_best_model} \n Best acc: {dt_score} \n Recall {dt_recall}")
 
-# # print("========== START MLP ==========")
-# # mlp_param_space = {
-# #     # 'hidden_layer_sizes': Categorical([(5, 5, 1), (6, 6, 1), (10, 10, 1), (12, 12, 1)]),  # Different layer sizes
-# #     'hidden_layer_sizes': Categorical([5, 6, 10, 12]),  # Different layer sizes
-# #     'learning_rate': Categorical(['constant', 'invscaling', 'adaptive']),  # Learning rate schedules
-# #     'max_iter': Categorical([50, 100, 150, 300, 500, 1000]),  # Iterations
-# #     'activation': Categorical(['identity', 'logistic', 'tanh', 'relu'])  # Activation functions
-# # }
+print("========== START MLP ==========")
+mlp_param_space = {
+    # 'hidden_layer_sizes': Categorical([(5, 5, 1), (6, 6, 1), (10, 10, 1), (12, 12, 1)]),  # Different layer sizes
+    # 'hidden_layer_sizes': Categorical([5, 6, 10, 12]),  # Different layer sizes
+    'layer1': Integer(5, 20),
+    'layer2': Integer(5, 20),
+    'layer3': Integer(5, 20),
+    'learning_rate': Categorical(['constant', 'invscaling', 'adaptive']),  # Learning rate schedules
+    # 'max_iter': Categorical([50, 100, 150, 300, 500, 1000]),  # Iterations
+    'activation': Categorical(['identity', 'logistic', 'tanh', 'relu'])  # Activation functions
+}
 
-# # mlp = MLPClassifier()
-# # mlp_bayes_search = BayesSearchCV(mlp, mlp_param_space, n_iter=50, cv=5, n_jobs=5)
-# # mlp_bayes_search.fit(x_train, y_train)
-# # mlp_best_model = mlp_bayes_search.best_estimator_
+mlp = MLPWrapper()
+mlp_bayes_search = BayesSearchCV(mlp, mlp_param_space, n_iter=50, cv=5, n_jobs=5)
+mlp_bayes_search.fit(x_train, y_train)
+mlp_best_model = mlp_bayes_search.best_estimator_
 
-# # mlp_opinion = mlp_best_model.predict(x_test)
-# # mlp_recall = recall_score(y_test, mlp_opinion, average='macro')
-# # mlp_score = accuracy_score(y_test, mlp_opinion)
-# # print(f"Best MLP model: {mlp_best_model} \n Acc: {mlp_score} \n Recall {mlp_recall}")
+mlp_opinion = mlp_best_model.predict(x_test)
+mlp_recall = recall_score(y_test, mlp_opinion)
+mlp_score = accuracy_score(y_test, mlp_opinion)
+print(f"Best MLP model: {mlp_best_model} \n Acc: {mlp_score} \n Recall {mlp_recall}")
 
 # print("========== START NAIVE BAYES ==========")
 # nb = GaussianNB()
